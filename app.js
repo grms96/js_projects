@@ -230,4 +230,457 @@
 //reload
 // window.location.reload(); // will keep loading the page
 
-console.log(window.navigator);
+//console.log(window.navigator);
+
+/// ************* Ibject Oriented Features in jS *********//
+// const gaurav = {
+//     name:"Gaurav",
+//     age:25
+// }
+// console.log(gaurav,gaurav.name,gaurav.age);
+
+// function Person(name,dob) {
+//     this.name = name,
+//     //this.age = age
+//     this.birthday = new Date(dob);
+//     this.getAge = function(){
+//         const diff = Date.now() - this.birthday.getTime();
+//         const ageDate = new Date(diff);
+//         return Math.abs(ageDate.getUTCFullYear()-1970);
+//     }
+// }
+// //console.log(this)// global scope points to window object
+// const gaurav = new Person("Gaurav",25);
+// const other = new Person("Other",30);
+// const newPerson = new Person("someone","1996-05-23");
+// //console.log(gaurav,other);
+// console.log(newPerson.getAge());
+
+//prototypes are used to manipulate object and access object instead of writing all the function inside object
+
+// function Person(firstName,lastName){
+//     this.firstName = firstName,
+//     this.lastName = lastName
+// }
+
+// Person.prototype.greeting = function(){
+//     return `Hello there ${this.firstName} ${this.lastName}`;
+// }
+
+// const person1 = new Person("Gaurav","Mishra");
+// console.log(person1.greeting());
+
+//prototypes can be inherited
+
+// ********** ES6 for creating objects ***********//
+
+// class Person{
+//     constructor(firstName,lastName){
+//         this.firstName = firstName;
+//         this.lastName = lastName
+//     }
+
+//     greetings(){
+//         return `Hello ${this.firstName} ${this.lastName}`
+//     }
+// }
+
+// const gaurav = new Person("Gaurav","Mishra");
+
+// console.log(gaurav);
+
+//console.log(gaurav.greetings());
+
+
+// can define statics method and static methods can be accessed usging class name
+
+// Inheritance ***********//
+
+// class Person {
+//     constructor(firstName,lastName){
+//         this.firstName = firstName;
+//         this.lastName = lastName;
+//     }
+
+//     grretings(){
+//         return `Hello ${this.firstName} ${this.lastName}`;
+//     }
+// }
+
+// class Customer extends Person{
+//     constructor(firstName,lastName,phone){
+//         super(firstName,lastName);
+//         this.phone = phone;
+//     }
+//     static addNUmber(x,y){
+//         return x+y;
+//         }
+// }
+
+// const gaurav = new Customer("GAURAV","MISHRA","9841215454112")
+
+// //console.log(gaurav);
+// console.log(gaurav.grretings())
+// console.log(Customer.addNUmber(1,2));
+
+/// *************** Asybchronous Programming **********//
+
+//Blocking code Or Synchronous//
+
+// function loadfn(){
+
+// }
+
+// loadfn()// blocking the code untill function is not executed
+
+// /* AJAX
+
+// Asynchronous js & XML
+
+
+// */
+
+// // callback functions ===> functions that can be passed into a function and can be called from there
+
+// const posts = [
+//     {title:'post1',body:"This is post1"},
+//     {title:'post2',body:"This is post2"}
+// ]
+
+// function newPost(post,callback){
+// setTimeout(function(){
+//     posts.push(post);
+//     callback();
+// },2000)
+// }
+
+// function getPosts(){
+//     setTimeout(function(){
+//         let output= '';
+//         posts.forEach(post=>{
+//             output += `<li>${post.title}</li>`
+//         });
+//         document.body.innerHTML = output;
+//     },1000)
+// }
+
+// newPost({title:'post3',body:"This is post3"},getPosts);
+
+
+// *************promises************
+
+// const posts = [
+//     {title:'post1',body:"This is post1"},
+//     {title:'post2',body:"This is post2"}
+// ]
+
+// function newPost(post){
+// return new Promise((resolve,reject)=>{
+//     //resolve(posts.push(post));
+//     reject(new Error);
+// })
+// }
+
+// function getPosts(){
+//     setTimeout(function(){
+//         let output= '';
+//         posts.forEach(post=>{
+//             output += `<li>${post.title}</li>`
+//         });
+//         document.body.innerHTML = output;
+//     },1000)
+// }
+
+// newPost({title:'post3',body:"This is post3"}).then(getPosts)
+// .catch(err=>{
+//     console.log(err);
+// });
+
+// **** arrow functions ******//
+
+
+
+// let users = ['Gaurav','Saurabh', 'Vaibhav'];
+
+// const getLength = users.map((user)=>{
+//     return user.length;
+// });
+
+// console.log(getLength);
+
+// ******** asunc await *******//
+
+// const sayHello = async () =>{
+//     return 'Hello';
+// }
+
+// sayHello()
+// .then((res)=>console.log(res))
+// .catch((err)=>console.log(err));
+
+// async makes normal functions to return a promise
+
+//wrting fetch fn wit async await
+
+// const getUsers = async () =>{
+    
+//     // await response of fetch call
+//     const res = await fetch('https://api.github.com/users');
+    
+//     //wait unctill its resolved
+//     const data = await res.json();
+
+//     //wait untill second promise is resolved
+//     return data;
+// }
+
+// getUsers()
+//     .then(users=>{
+//         users.map((user)=>{
+//             console.log(user.login);
+//         })
+//     })
+//     .catch((err)=>{
+//         console.log(err);
+//     })
+
+
+// Error handling ********
+
+
+// try {
+//     helloFn();
+// } catch (error) {
+//     console.log(error);
+//     console.log(error.message);
+// } finally {
+//     console.log("Always runs no matter what!");
+// }
+
+// console.log("After try Catch");
+
+// let user = { name : 'Gaurav',email : 'misra.gaurav789@gmail.com'}
+
+// try {
+//     if(!user.name)
+//         throw new Error('User name not defined');
+//     else
+//         console.log(user.name)
+// } catch (error) {
+//     console.log(error);
+//     console.log(error.message);
+// }
+
+// ********** regular expresssions
+
+// let re = /hello/;
+// console.log(re) // return regular expression ==> /hello/
+//console.log(re.source); // returns source ==> hello
+
+//console.log(re.exec('hello world')); // gets the index of first match
+// let re = /Hello/i ===>ignore case
+//  let re = /hello/g //===> searchches globally
+// // const result = re.test('hello');
+// // console.log(result); //true
+
+// let somestring = "hello there hello"
+// const result = somestring.search(re);
+// console.log(result)
+
+// Meta charachter
+
+//re = /^h/i;//starting with h
+//re = /World$/i ===> ends with world or World
+//re = /^hello$/i// ==> bigin and end with hello
+//re = /h.llo/i // exactly one character between h and l
+//re = /h*llo/i //any no of charachters between h and l
+// re = /he?lo/i // optional one char in between e and l
+
+// re = /he[ab]o/ // must be and a or b
+// re = /he[^ab]o/ // not a or b
+// re = /[A-Za-z0-9]llo/ //any od A-z or a-z or 0-9 ANY NO OF CHARS
+// re = /HEL{2}O/i // exactly two l's
+
+// paranthesis grouping
+
+// re = /^([0-9]x){3}$/ // patter like 3x3x3x
+
+// //shorthand chars
+// re = /\w/ // word chars - alphanumeric or _
+// re = /\w+/; // one or more
+// re = /\W/; //non word chars
+// re = /\d/ //match any digit 
+// re = /\d+/ // one or more
+// re = /\D/ // non digit 
+// re = /\s/ // whitespace char
+
+
+// const str = '3x3x3x';
+
+
+
+// //console.log(re.test(str));
+// console.log(re.test(str));
+
+
+
+// **** iterators and genrators **** ////
+
+// *** symbols **** //
+
+// **** Destructutring *** //
+// let a,b;
+// [a,b] = [10,20];
+
+// console.log(a,b)
+
+// // map ***********
+// // maps are key avalue pair can use any type as a key or a value
+
+// const map1 = new Map();
+
+// const key1 = 'Some Srting'
+// const key2 = {},
+// key3 = function() {};
+
+// // set map value by key
+
+// map1.set(key1, "Value of key1");
+// map1.set(key2, "Value of key2");
+// map1.set(key3, "Value of key3");
+
+// //get values of key
+// // console.log(map1.get(key1),map1.get(key2),map1.get(key3));
+
+// // // count values
+// // console.log(map1.size);
+
+// // itrating maps
+
+// map1.forEach((key,value) => {
+//     console.log(key,value);
+// });
+
+// ******* set stores unique values of any type *****//
+
+// const set1 = new Set();
+
+// set1.add(100);
+// set1.add('A string');
+// set1.add(10);
+// set1.add(true)
+// set1.add(null)
+// set1.add(undefined)
+// set1.add({name:'gaurav'})
+
+
+// console.log(set1);
+
+// //count
+
+// console.log(set1.size);
+// //check for values
+// console.log(set1.has(10));
+// console.log(set1.has(5+5));
+
+// // delete 
+// set1.add(100)
+// console.log(set1)
+// set1.delete(100);
+// console.log(set1);
+
+// Javascript design patterns*******
+
+
+// module and revaling module patterns
+
+// iffi
+
+// (function(){
+
+//     //Declare private vars and functions
+
+//     return {
+
+//     }
+
+// })();
+
+// standard module pattern
+// const Uictrl = (function(){
+//     let text = 'Hellow World';
+
+//     const changeText = function() {
+//         const element = document.querySelector('h1');
+//         element.textContent = text; 
+//     }
+
+//     // returned things can be accesed from outside
+//     return {
+//         callChangeText : function() {
+//             changeText();
+//             console.log(text);
+//         }
+//     }
+// })();
+
+// Uictrl.callChangeText();
+
+
+// revealing module pattern
+// const ItemCtrl = (function(){
+//     let data = [];
+
+//     function add(item){
+//         data.push(item);
+//         console.log('Item added...');
+//     }
+
+//     function get(id) {
+//         return data.find(item => {
+//             return item.id === id;
+//         });
+//     }
+
+//     return {
+//         add : add,
+//         get : get
+//     }
+// })();
+
+// ItemCtrl.add({id:1,name:"Gaurav"});
+// console.log(ItemCtrl.get(1));
+
+
+// Singleton pattern
+// const singleton = (function(){
+
+//     let instance;
+
+//     function createInstance() {
+//         const object = new Object({name:'Gaurav'});
+//         return object;
+//     }
+
+//     return {
+//         getInstance : function(){
+//             if(!instance){
+//                 createInstance();
+//             }
+//             return instance;
+//         }
+//     }
+
+// })();
+// const instanceA = singleton.getInstance();
+// const instanceB = singleton.getInstance();
+
+// console.log(instanceA === instanceB); // singleton pattern only allows to create one instance
+
+// ****** factory pattern *****// used to create multiple objects
+
+// observer pattern used to notify certain events
+
+// mediator pattern ex chat room
+
+// state pattern
